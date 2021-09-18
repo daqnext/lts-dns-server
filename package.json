@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha  ./test/*.js --timeout 15000 --exit",
-    "dev": "nodemon ./src/main.js",
+    "dev": "nodemon ./src/main.js ",
     "prod": "pm2 start pm2.json"
   },
   "repository": {

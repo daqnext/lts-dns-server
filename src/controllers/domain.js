@@ -11,6 +11,7 @@ koaRouter.ECTMGet('/domain/all', async (ctx, next) => {
         return;
     }
 
+
     let token = ctx.ectReq.GetToken();
     if (token && (await KeyManager.keyExist(token))) {
         let dresult = await DomainManager.getAll();
