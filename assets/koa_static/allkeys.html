@@ -1,0 +1,43 @@
+<header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+  <div class="d-flex align-items-center text-dark text-decoration-none">
+    <span class="fs-4">All Keys</span>
+  </div>
+</header>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">ApiKey</th>
+    </tr>
+  </thead>
+  <tbody id="tbody">
+
+  </tbody>
+</table>
+
+
+<script type="text/template" id="t-row">
+      <tr>
+        <td>{{name}}</td>
+        <td>{{apikey}}</td>
+      </tr>
+</script>
+
+<script>
+  $(async function () {
+
+    const result = await hc.ECTGet("/key/getall", window.localStorage.getItem("token"));
+    if (result.Err != null) {
+      alertify.error('Sys Error:' + result.Err);
+    } else {
+      let jresult = result.ToJson();
+      if (jresult.result) {
+        $("#t-row").render(jresult.result).appendTo("#tbody");
+      } else {
+        alertify.error('Error');
+      }
+    }
+  });
+</script>

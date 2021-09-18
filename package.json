@@ -1,0 +1,58 @@
+{
+  "name": "dns-server",
+  "version": "1.0.1",
+  "description": "dns server with api and html dashboard management",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha  ./test/*.js --timeout 15000 --exit",
+    "dev": "nodemon ./src/main.js",
+    "prod": "pm2 start pm2.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daqnext/dns-server.git"
+  },
+  "keywords": [
+    "dns",
+    "server",
+    "api",
+    "dashboard"
+  ],
+  "author": "LEO",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daqnext/dns-server/issues"
+  },
+  "homepage": "https://github.com/daqnext/dns-server#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "ectsm-node": "^1.1.4",
+    "ioredis": "^4.27.6",
+    "koa": "^2.13.1",
+    "koa-bodyparser": "^4.3.0",
+    "koa-json": "^2.0.2",
+    "koa-router": "^10.0.0",
+    "koa-static": "^5.0.0",
+    "koa2-cors": "^2.0.6",
+    "log4js": "^6.3.0",
+    "lts-dns-server-lib": "^0.1.6",
+    "minimist": "^1.2.5",
+    "moment": "^2.29.1",
+    "mysql2": "^2.2.5",
+    "nodemailer": "^6.6.3",
+    "pm2": "^5.1.0",
+    "randomstring": "^1.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.3.4",
+    "mocha": "^9.0.3",
+    "nodemon": "^2.0.12"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "node_modules/*",
+      "dist/*"
+    ]
+  }
+}

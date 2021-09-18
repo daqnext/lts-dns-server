@@ -1,0 +1,36 @@
+<header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+    <div class="d-flex align-items-center text-dark text-decoration-none">
+        <span class="fs-4">Input Your Key</span>
+    </div>
+</header>
+
+<form>
+    <div class="mb-3">
+        <label class="form-label">Key:</label>
+        <input type="text" class="form-control" id="apikeyinput">
+        <div class="form-text">Don't tell other your key</div>
+    </div>
+    <div type="submit" class="btn btn-primary" id="verify">Verify</div>
+</form>
+<div>
+
+</div>
+
+<script>
+    $("#verify").click(async function () {
+        let token= $("#apikeyinput").val().trim();
+        const result = await hc.ECTGet("/key/verify", token);
+        if (result.Err != null) {
+            alertify.error('Sys Error:' + result.Err);
+        } else {
+            jresult=result.ToJson();
+            if (jresult.result) {
+                window.localStorage.setItem("token",token)
+                alertify.success('Ok');
+            } else {
+                window.localStorage.setItem("token","")
+                alertify.error('Error');
+            }
+        }
+    });
+</script>

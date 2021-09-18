@@ -1,0 +1,59 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;height: 100%;min-height:1560px;">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+      <span class="fs-4">DNS-Service</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a href="#setapikey" class="nav-link text-white" id="setapikey">
+          Set-Api-Key
+        </a>
+      </li>
+      <li>
+        <a href="#allkeys" class="nav-link text-white"  id="allkeys" >
+          ALL-Keys
+        </a>
+      </li>
+
+      <li>
+        <a href="#domain" class="nav-link text-white"  id="domain" >
+          ALL-Domains
+        </a>
+      </li>
+       
+    </ul>
+  </div>
+
+  <script>
+     
+    function inisidebar(){
+      $(".nav-link").attr("class","nav-link text-white");
+      if(window.localStorage.getItem("token")!=""){
+          let key=window.location.href.split('#')[1];
+          $("#"+key).attr("class","nav-link active");
+          $("#page-content").load(key+".html");
+      }else{
+          $("#setapikey").attr("class","nav-link active");
+          $("#page-content").load("setapikey.html");
+      }
+    }
+
+    $(function(){
+          $(".nav-link").click(function(){
+              if(window.localStorage.getItem("token")!=""){
+                      $(".nav-link").attr("class","nav-link text-white");
+                      $(this).attr("class","nav-link active");
+                      $("#page-content").load($(this).attr("id")+".html");
+              }else{
+                      $(".nav-link").attr("class","nav-link text-white");
+                      $("#setapikey").attr("class","nav-link active");
+                      $("#page-content").load("setapikey.html");
+              }
+          });
+
+          inisidebar();
+    });
+
+
+  </script>

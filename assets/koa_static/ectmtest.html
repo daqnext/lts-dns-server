@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/httpclient-min.js"></script>
+    <script src="/js/index.js"></script>
+</head>
+
+
+<script>
+
+      
+    async function GetTest() {
+        const url = "/testget";
+        //send request with default timeout and token 'usertoken'
+        const result = await hc.ECTGet(url, "usertoken");
+        if (result.Err != null) {
+            console.log("err", result.Err);
+        } else {
+            console.log("status", result.Rs.status);
+            console.log("get request reponse string", result.ToString());
+            console.log("get request reponse json", result.ToJson());
+        }
+    }
+
+
+    async function PostTest() {
+        const sendData = {
+            Name: "Jack",
+            Email: "jack@gmail.com",
+            Phone: "123456789",
+            Age: 18,
+        };
+
+        const url = "/testpost";
+        const result = await hc.ECTPost(url, sendData, "token");
+        if (result.Err != null) {
+            console.log("err", result.Err);
+        } else {
+            console.log("status", result.Rs.status);
+            console.log("get request reponse string", result.ToString());
+            console.log("get request reponse json", result.ToJson());
+        }
+    }
+
+</script>
+
+<body>
+    <div onclick="GetTest()">GetTest</div>
+    <div onclick="PostTest()">PostTest</div>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="/css/alertify.css" rel="stylesheet"/>
+        <link href="/css/alertify.bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <main style="height: 100%;">
+            <div id="sidebar" style=" height: 100%;position: absolute;"></div>
+            <div id="page-content" style="padding-left: 350px; padding-top: 50px; height: 100%;width: 90%;">
+                Welcome to DNS Service Manager
+            </div>
+        </main>
+    </body>
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/jqrender.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/alertify.min.js"></script>
+    <script src="/js/jquery.cookie-1.4.1.min.js"></script>
+    <script src="/js/httpclient-min.js"></script>
+    <script src="/js/index.js"></script>
+     
+    <script>
+    $(function(){
+        $('#sidebar').load("sidebar.html");
+    });
+    </script>
+
+
+</html>

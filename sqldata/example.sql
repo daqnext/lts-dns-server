@@ -1,0 +1,3 @@
+/*
+put all your sql here e.g create database , insert example data etc....
+*/

@@ -1,0 +1,4 @@
+node_modules
+log
+configs/prod.js
+package-lock.json
