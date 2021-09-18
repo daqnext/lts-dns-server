@@ -1,6 +1,6 @@
 {
   "name": "dns-server",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "dns server with api and html dashboard management",
   "main": "index.js",
   "scripts": {
