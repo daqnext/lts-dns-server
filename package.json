@@ -26,7 +26,7 @@
   "homepage": "https://github.com/daqnext/dns-server#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "ectsm-node": "^1.1.4",
+    "ectsm-node": "^1.1.7",
     "ioredis": "^4.27.6",
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
