@@ -66,7 +66,7 @@ server.on('query', async function (query) {
                                         try {
                                                 var tagstr = domain.substring(15, 15 + taglength);
                                                 var record = new named.ARecord(DomainManager.tagToIp(tagstr));
-                                                query.addAnswer(domain, record, 1800);
+                                                query.addAnswer(domain, record, 72000);
                                         } catch (err) {
                                                 logger.error('bad tag resolving');
                                         }
@@ -111,12 +111,12 @@ server.on('query', async function (query) {
                                 var record = new named.SOARecord('mesontracking.com', {
                                         admin: 'admin@mesontracking.com',
                                         serial: 0,
-                                        refresh: 1800,
+                                        refresh: 36000,
                                         retry: 1800,
-                                        expire: 7200,
-                                        ttl: 1800
+                                        expire: 72000,
+                                        ttl: 72000
                                 });
-                                query.addAnswer(domain, record, 1800);
+                                query.addAnswer(domain, record, 72000);
 
                         } catch (err) {
                                 logger.error('SOA resolve error');
