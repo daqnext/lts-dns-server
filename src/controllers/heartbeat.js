@@ -5,3 +5,4 @@ koaRouter.get('/heartbeat',async (ctx,next) =>{
     ctx.body={time:moment().unix()};
     await next();
 });
+

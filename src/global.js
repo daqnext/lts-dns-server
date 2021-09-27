@@ -10,7 +10,8 @@ const mysql =require( "mysql2");
 const axios =require( "axios");
 const randomstring =require( "randomstring");
 const moment = require('moment');
-const {ECTHttpServer,ecthttp} = require("ectsm-node")
+const {ECTHttpServer,ecthttp} = require("ectsm-node");
+const {Utils} =require('./util.js');
  
 
 
@@ -152,5 +153,5 @@ ECTHttpServer.SendBack=function(ctx,data){
     return true
 }
 
-module.exports={args,ROOTDIR,koaApp,named,koaRouter,logger,redis,sqlpool,axios,randomstring,moment,ecthttp,ECTMServer,ECTHttpServer};
+module.exports={args,ROOTDIR,koaApp,named,koaRouter,logger,redis,sqlpool,axios,randomstring,moment,ecthttp,ECTMServer,ECTHttpServer,Utils};
 
