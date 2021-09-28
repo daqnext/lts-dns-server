@@ -1,12 +1,12 @@
 const { redis, sqlpool, Utils } = require("../global.js");
 class DomainManager {
 
-    static mem_prefix = "dns_domain_"
+    static mem_prefix = "dns_domain:"
 
     static async getAll(forceupdate = false) {
         let key = DomainManager.mem_prefix + "all";
         let exist = await redis.exists(key);
-        if(exist){
+        if (exist) {
             if (Utils.checkTtlRefresh(await redis.ttl(key))) {
                 forceupdate = true;
             }
@@ -50,16 +50,16 @@ class DomainManager {
 
     static async setRecord(type, domain, object) {
         let tosetstr = JSON.stringify(object);
-        let key = DomainManager.mem_prefix + "record_" + type + "_" + domain;
+        let key = DomainManager.mem_prefix + "record:" + type + ":" + domain;
         await redis.set(key, tosetstr);
         await redis.expire(key, 30);
     }
 
     static async getRecord(type, domain, forceupdate = false) {
         try {
-            let key = DomainManager.mem_prefix + "record_" + type + "_" + domain;
+            let key = DomainManager.mem_prefix + "record:" + type + ":" + domain;
             let exist = await redis.exists(key);
-            if(exist){
+            if (exist) {
                 if (Utils.checkTtlRefresh(await redis.ttl(key))) {
                     forceupdate = true;
                 }

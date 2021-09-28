@@ -1,7 +1,7 @@
 const { redis, sqlpool } = require("../global.js");
 class KeyManager {
 
-    static mem_prefix = "dns_key_"
+    static mem_prefix = "dns_key:"
 
     static async getAll(forceupdate=false) {
         let result = {};
