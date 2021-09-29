@@ -26,12 +26,14 @@ let koaRouter = new router();
 
 
 ////////////global ioredis////////////
-const redis = new redis.Cluster([
-      {
-        host: args.redis_host,
-        port: args.redis_port,
-      }]
+const redis = new ioredis.Cluster([
+    {
+      host: args.redis_host,
+      port: args.redis_port,
+    }]
 );
+ 
+
 
 // Create the connection pool. The pool-specific settings are the defaults
 let sqlpool = mysql.createPool({
