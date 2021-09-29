@@ -20,6 +20,7 @@ var common = {
   redis_port:6379,
   redis_password:"",
   redis_family:4,
+  redis_db:0,
 
   //cache
   cache_prefix:'dev_dns_',
