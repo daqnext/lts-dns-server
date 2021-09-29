@@ -14,7 +14,6 @@ var common = {
   db_name:'test',
   db_pool_num:5,
 
-
   //redis cluter defalt db0
   redis_host:'localhost',
   redis_port:6379,
