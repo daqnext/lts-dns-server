@@ -26,7 +26,7 @@ let koaRouter = new router();
 
 
 ////////////global ioredis////////////
-const redis = new Redis.Cluster([
+const redis = new redis.Cluster([
       {
         host: args.redis_host,
         port: args.redis_port,
