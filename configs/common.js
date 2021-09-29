@@ -15,12 +15,10 @@ var common = {
   db_pool_num:5,
 
 
-  //redis
+  //redis cluter defalt db0
   redis_host:'localhost',
   redis_port:6379,
   redis_password:"",
-  redis_family:4,
-  redis_db:0,
 
   //cache
   cache_prefix:'dev_dns_',
