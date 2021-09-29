@@ -25,15 +25,12 @@ let koaRouter = new router();
 
 
 
-
-
 ////////////global ioredis////////////
-const redis = new ioredis({
+const redis = new ioredis.Cluster({
     port:args.redis_port,
     host:args.redis_host,
     family:args.redis_family,
-    db:args.redis_db,
-    //password:args.redis_password, 
+    db:args.redis_db
 });
 
 // Create the connection pool. The pool-specific settings are the defaults
