@@ -75,9 +75,17 @@ server.on('query', async function (query) {
                         } else {
                                 try {
                                         var cacherecord = await DomainManager.getRecord('A', domain);
-                                        if (cacherecord.value) {
+                                        if (cacherecord&&cacherecord.value) {
                                                 var record = new named.ARecord(cacherecord.value);
                                                 query.addAnswer(domain, record, cacherecord.ttl);
+                                        }else{
+
+                                                var cacherecordCName = await DomainManager.getRecord('CNAME', domain);
+                                                if (cacherecordCName&&cacherecordCName.value) {
+                                                        var record = new named.CNAMERecord(cacherecordCName.value);
+                                                        query.addAnswer(domain, record, cacherecordCName.ttl);
+                                                }
+
                                         }
                                 } catch (err) {
                                         logger.error('A type bad resolving');
@@ -87,7 +95,7 @@ server.on('query', async function (query) {
                 case 'TXT':
                         try {
                                 var cacherecord = await DomainManager.getRecord('TXT', domain);
-                                if (cacherecord.value) {
+                                if (cacherecord&&cacherecord.value) {
                                         var record = new named.TXTRecord(cacherecord.value);
                                         query.addAnswer(domain, record, cacherecord.ttl);
                                 }
@@ -98,7 +106,7 @@ server.on('query', async function (query) {
                 case 'MX':
                         try {
                                 var cacherecord = await DomainManager.getRecord('MX', domain);
-                                if (cacherecord.value) {
+                                if (cacherecord&&cacherecord.value) {
                                         var record = new named.MXRecord(cacherecord.value, { ttl: cacherecord.ttl });
                                         query.addAnswer(domain, record, cacherecord.ttl);
                                 }
@@ -126,7 +134,7 @@ server.on('query', async function (query) {
                 case 'CAA':
                         try {
                                 var cacherecord = await DomainManager.getRecord('CAA', domain);
-                                if (cacherecord.value) {
+                                if (cacherecord&&cacherecord.value) {
                                         var record = new named.CAARecord(cacherecord.caa_flag, cacherecord.caa_tag, cacherecord.value);
                                         query.addAnswer(domain, record, cacherecord.ttl);
                                 }
@@ -137,7 +145,7 @@ server.on('query', async function (query) {
                 case 'AAAA':
                         try {
                                 var cacherecord = await DomainManager.getRecord('AAAA', domain);
-                                if (cacherecord.value) {
+                                if (cacherecord&&cacherecord.value) {
                                         var record = new named.AAAARecord(cacherecord.value);
                                         query.addAnswer(domain, record, cacherecord.ttl);
                                 }
@@ -148,7 +156,7 @@ server.on('query', async function (query) {
                 case 'CNAME':
                         try {
                                 var cacherecord = await DomainManager.getRecord('CNAME', domain);
-                                if (cacherecord.value) {
+                                if (cacherecord&&cacherecord.value) {
                                         var record = new named.CNAMERecord(cacherecord.value);
                                         query.addAnswer(domain, record, cacherecord.ttl);
                                 }
