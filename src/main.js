@@ -38,7 +38,7 @@ koaApp.listen(args.port, () => {
 
 ////////////start dns server //////////
 
-var server = named.createServer();
+var server = named.createServer({authoritative:1});
 
 
 server.listen(53, '0.0.0.0', function () {
